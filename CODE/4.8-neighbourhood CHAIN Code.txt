@@ -1,0 +1,650 @@
+ #include<stdio.h>
+ #include<conio.h>
+ #define max(a,b) (a>b?a:b)
+ void cc();
+ void fw();
+ void n7();
+ void n6();
+ void n5();
+ void n4();
+ void n3();
+ void n2();
+ void n1();
+ void n0();
+ void l7();
+ void l6();
+ void l5();
+ void l4();
+ void l3();
+ void l2();
+ void l1();
+ void l0();
+ void maxima();
+ void sc7();
+ void sc6();
+ void sc5();
+ void sc4();
+ void sc3();
+ void sc2();
+ void sc1();
+ void sc0();
+ void n7c();
+ void n6c();
+ void n5c();
+ void n4c();
+ void n3c();
+ void n2c();
+ void n1c();
+ void n0c();
+ int rs=18,cs=64; 
+ int M[512][512],a[512][512],s[10],sx,sy,m,x,y,c=0;
+ FILE *fp1,*fp2,*fp3;
+ int main()
+ {
+ 	int i,j,k;
+ 	fp1=fopen("op25(3).txt","r");
+ 	fp2=fopen("N1.txt","w");
+ 	fp3=fopen("NN1.txt","w");
+ 	for(i=0;i<rs;i++)
+ 	{
+ 		for(j=0;j<cs;j++)
+ 		{
+ 			M[i][j]=0;
+ 		}
+ 	}
+ 	for(i=0;i<rs;i++)
+ 	{
+ 		for(j=0;j<cs;j++)
+ 		{
+ 			fscanf(fp1,"%d",&k);
+ 			a[i][j]=k;
+ 		}
+ 	}
+ 	fw();
+ 	cc();
+ 	fprintf(fp3,"%d",c);
+ 	fclose(fp1);
+ 	fclose(fp2);
+ 	fclose(fp3);
+ 	return 0;
+ }
+ void fw()
+{
+	int i,j,s=0;
+	for(j=0;j<cs;j++)
+		{
+			for(i=0;i<rs;i++)
+			{
+				if(a[i][j]==255)
+				s++;
+				if(s==1)
+				{
+					sx=i;
+					sy=j;
+				}
+				if(a[i-1][j]==255 && a[i][j-1]==255 && a[i][j+1]==255 && a[i+1][j]==255)
+				{
+					M[i][j]=1;
+				}
+			}
+  		}
+	x=sx;
+	y=sy;
+	printf("(%d,%d)",x,y);
+	M[x][y]=1;
+	printf("\nSEQ: ");
+}
+ void cc()
+ {
+ 	int i;
+ 	while((sx!=x || sy!=y)||(c==0))
+ 	{
+ 		 n7();
+ 		 n6();
+ 		 n5();
+ 		 n4();
+ 		 n3();
+ 		 n2();
+ 		 n1();
+         n0();
+          maxima();
+			if(m==7)
+ 				n0c();
+ 			if(m==6)
+ 				n1c();
+ 			if(m==5)
+ 				n2c();
+ 			if(m==4)
+ 				n3c();
+ 			if(m==3)
+ 				n4c();
+			if(m==2)
+ 				n5c();
+			if(m==1)
+ 				n6c();
+			if(m==0)
+ 				n7c();	 	 	 	
+ 			if(m==10)
+ 			{
+ 				printf(" 0 ");
+ 				fprintf(fp2," 0 ");
+ 				sx=x;
+ 				sy=y;
+ 			}
+ 			if(m==20)
+ 			{
+ 				printf(" 1 ");
+				fprintf(fp2," 1 ");
+				sx=x;
+				sy=y; 	
+			}
+			if(m==30)
+			{
+				printf(" 7 ");
+				fprintf(fp2," 7 ");
+				sx=x;
+				sy=y;
+			}
+			if(m==-1)
+			{
+				l7();
+ 				l6();
+ 				l5();
+ 				l4();
+ 				l3();
+				l2();
+ 				l1();
+ 				l0();
+				m=max(s[0],max(s[1],max(s[2],max(s[3],max(s[4],max(s[5],max(s[6],s[7])))))));
+				if(m==7)
+				{
+					a[x-1][y-1]=255;
+					M[x-1][y-1]=1;
+					printf(" 7 ");
+					fprintf(fp2," 7  ");
+					x--;
+					y--;
+				} 
+				if(m==6)
+				{
+					a[x-1][y]=255;
+					M[x-1][y]=1;
+					printf(" 6 ");
+					fprintf(fp2," 6 ");
+					x--;
+				}	
+				if(m==5)
+				{
+					a[x-1][y+1]=255;
+					M[x-1][y+1]=1;
+					printf(" 5 ");
+					fprintf(fp2," 5 ");
+					x--;
+					y++;
+				}
+				if(m==4)
+				{
+					a[x][y+1]=255;
+					M[x][y+1]=1;
+					printf(" 4 ");
+					fprintf(fp2," 4 ");
+					y++;
+				}
+				if(m==3)
+				{
+					a[x+1][y+1]=255;
+					M[x+1][y+1]=1;
+					printf(" 3 ");
+					fprintf(fp2," 3 ");
+					x++;
+					y++;
+				}
+				if(m==2)
+				{
+					a[x+1][y]=255;
+					M[x+1][y]=1;
+					printf(" 2 ");
+					fprintf(fp2," 2 ");
+					x++;
+				}
+				if(m==1)
+				{
+					a[x+1][y-1]=255;
+					M[x+1][y-1]=1;
+					printf(" 1 ");
+					fprintf(fp2," 1 ");
+					x++;
+					y--;
+				}
+				if(m==0)
+				{
+					a[x][y-1]=255;
+					M[x][y-1]=1;
+					printf(" 0 ");
+					fprintf(fp2," 0 ");
+					y--;
+				}
+				if(m==-1)
+				{
+				printf("object can't have chaincode");
+				fprintf(fp2,"object can't have chaincode");
+				sx=x;
+				sy=y;
+				}
+			}		
+			c++;
+ 	}
+}
+void l7()
+{
+	if(a[x-1][y-1]==0)
+	{
+		s[0]=7;	
+	}		
+	else
+	s[0]=-1;
+}
+void l6()
+{
+	if(a[x-1][y]==0)
+	{
+		s[1]=6;	
+	}		
+	else
+	s[1]=-1;	
+}
+void l5()
+{
+	if(a[x-1][y+1]==0)
+	{
+		s[2]=5;	
+	}		
+	else
+	s[2]=-1;
+}
+void l4()
+{
+	if(a[x][y+1]==0)
+	{
+		s[3]=4;	
+	}		
+	else
+	s[3]=-1;
+}
+void l3()
+{
+	if(a[x+1][y+1]==0)
+	{
+		s[4]=3;	
+	}		
+	else
+	s[4]=-1;	
+}
+void l2()
+{
+	if(a[x+1][y]==0)
+	{
+		s[5]=2;	
+	}		
+	else
+	s[5]=-1;	
+}
+void l1()
+{
+	if(a[x+1][y-1]==0)
+	{
+		s[6]=1;	
+	}		
+	else
+	s[6]=-1;
+}
+void l0()
+{
+	if(a[x][y-1]==0)
+	{
+		s[7]=0;	
+	}		
+	else
+	s[7]=-1;	
+}
+void n7()
+{
+	if(a[x-1][y-1]==255) 
+	{
+ 		if(M[x-1][y-1]==0)
+ 		{
+ 			s[0]=0;
+		}
+		else if(M[x-1][y-1]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[0]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[0]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[0]=30;	
+ 			else	
+				s[0]=-1;
+		}
+	}	
+ 	else
+ 		s[0]=-1;
+}
+void n6()
+{
+	if(a[x-1][y]==255) 
+	{
+ 		if(M[x-1][y]==0)
+ 		{
+ 			s[1]=1;
+		}
+		else if(M[x-1][y]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[1]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[1]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[1]=30;
+ 			else	
+				s[1]=-1;
+		}
+	}	
+ 	else
+ 		s[1]=-1;
+}
+void n5()
+{
+	if(a[x-1][y+1]==255) 
+	{
+ 		if(M[x-1][y+1]==0)
+ 		{
+ 			s[2]=2;
+ 			
+		}
+		else if(M[x-1][y+1]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[2]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[2]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[2]=30;	
+ 			else	
+				s[2]=-1;
+		}
+	}	
+ 	else
+ 		s[2]=-1;
+}
+void n4()
+{
+	if(a[x][y+1]==255) 
+	{
+ 		if(M[x][y+1]==0)
+ 		{
+ 			s[3]=3;
+ 			
+		}
+		else if(M[x][y+1]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[3]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[3]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[3]=30;	
+ 			else	
+				s[3]=-1;
+		}
+	}	
+ 	else
+ 		s[3]=-1;
+}
+ void n3()
+ {
+ 	if(a[x+1][y+1]==255) 
+	{
+ 		if(M[x+1][y+1]==0)
+ 		{
+ 			s[4]=4;
+ 			
+		}
+	else if(M[x+1][y+1]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[4]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[4]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[4]=30;
+ 			else	
+				s[4]=-1;
+		}
+ 	}
+ 	else	
+ 		s[4]=-1;
+ }
+ void n2()
+ {
+	if(a[x+1][y]==255) 
+	{
+		if(M[x+1][y]==0)
+		{
+			s[5]=5;
+ 			
+		}
+		else if(M[x+1][y]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[5]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[5]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[5]=30;	
+ 			else	
+				s[5]=-1;
+		}
+	}	
+ 	else
+ 		s[5]=-1;
+ }
+ void n1()
+{
+	if(a[x+1][y-1]==255) 
+	{
+ 		if(M[x+1][y-1]==0)
+ 		{
+ 			s[6]=6;
+ 			
+		}
+		else if(M[x+1][y-1]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[6]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[6]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[6]=30;	
+ 			else	
+				s[6]=-1;
+		}
+ 	}	
+ 	else
+ 		s[6]=-1;
+}
+void n0()
+{
+	if(a[x][y-1]==255) 
+	{
+ 		if(M[x][y-1]==0)
+ 		{
+ 			s[7]=7;
+		}
+		else if(M[x][y-1]==1)
+		{
+			if( sx==x && sy==y-1)
+ 				s[7]=10;
+ 			else if(sx==x+1 && sy==y-1 )
+ 				s[7]=20;
+ 			else if(sx==x-1 && sy==y-1)
+			 	s[7]=30;	
+ 			else	
+				s[7]=-1;
+		}
+	}	
+ 	else
+ 		s[7]=-1;
+}
+void n7c()
+{
+	printf(" 7 ");
+	fprintf(fp2," 7 ");
+	M[x-1][y-1]=1;
+	x--;
+ 	y--;
+}
+void n6c()
+{
+	printf(" 6 ");
+	fprintf(fp2," 6 ");
+	M[x-1][y]=1;
+	x--;
+}
+void n5c()
+{
+	printf(" 5 ");
+	fprintf(fp2," 5 ");
+	M[x-1][y+1]=1;
+	x--;
+ 	y++;
+}
+void n4c()
+{
+	printf(" 4 ");
+	fprintf(fp2," 4 ");
+	M[x][y+1]=1;
+	y++;
+}
+void n3c()
+{
+	printf(" 3 ");
+	fprintf(fp2," 3 ");
+	M[x+1][y+1]=1;
+	x++;
+ 	y++;
+}
+void n2c()
+{
+	printf(" 2 ");
+	fprintf(fp2," 2 ");
+	M[x+1][y]=1;
+	x++;
+}
+void n1c()
+{
+	printf(" 1 ");
+	fprintf(fp2," 1 ");
+	M[x+1][y-1]=1;
+	x++;
+ 	y--;
+}
+void n0c()
+{
+	printf(" 0 ");
+	fprintf(fp2," 0 ");
+	M[x][y-1]=1;
+ 	y--;
+}
+void sc7()
+{
+	
+}
+void sc6()
+{
+	
+}
+void sc5()
+{
+	
+}
+void sc4()
+{
+	
+}
+void sc3()
+{
+	
+}
+void sc2()
+{
+	
+}
+void sc1()
+{
+	
+}
+void sc0()
+{
+	
+}
+void maxima()
+{
+	int i,j,z=0,k=0,max;
+	int sc[10];
+	for(i=0;i<8;i++)
+	{
+	    if(s[i]==10 || s[i]==20 || s[i]==30 || s[i]==-1)
+		{
+			k++;
+		}
+	}
+	if(k==0)
+	{
+		max=-100;
+		for(i=0;i<8;i++)
+		{
+			if(max<s[i])
+			{
+				max=s[i];
+			}
+		}
+		m=max;
+	}
+	else if(k==8)
+	{
+		max=-100;
+		for(i=0;i<8;i++)
+		{
+			if(max<s[i])
+			{
+				max=s[i];
+			}
+		}
+		m=max;	
+	}
+	else if(k>0 && k<8)
+	{
+		z=0;
+		for(i=0;i<8;i++)
+		{
+		    if(s[i]!=10 && s[i]!=20 && s[i]!=30 && s[i]!=-1)
+			{
+				sc[z]=s[i];
+				z++;
+			}
+		}
+		max=-100;
+		for(i=0;i<z;i++)
+		{
+			if(max<sc[i])
+			{
+				max=sc[i];
+			}
+		}
+		m=max;
+		
+	}
+	else
+	m=max(s[0],max(s[1],max(s[2],max(s[3],max(s[4],max(s[5],max(s[6],s[7])))))));
+}

@@ -1,0 +1,48 @@
+CODE DESCRIPTION:
+____________________________________
+
+1> Face Feature Extraction Code.c
+
+Face features like nose , eyes and mouth containing image portion from images are extracted using this code.
+
+First Input images have to be converted into text file.Header of image file have to be deleted from text file.
+In code, size of image, input file name and output file name has to written. X axis coordinate for horizontal division and Y axis coordinate for vertical division have to be given in code. 
+
+
+2> Object Detection Code.c
+
+Objects are extracted from images containing eyes , nose and mouth using this code.
+
+
+First Input images have to be converted into text file.Header of image file have to be deleted from text file.
+In code, size of image, input file name and output file name has to written and threshold has to be given. 
+
+3> Preprocessing Code.c
+
+Objects are pre processed for clarity of representation using this code. Pre processed object is represented in geometric form.
+
+First Input images have to be converted into text file.Header of image file have to be deleted from text file.
+In code, size of image, input file name and output file name has to written and threshold has to be given. 
+
+4> 8-neighbourhood CHAIN Code.c
+
+8-neighbourhood chain code is used on objects to get a sequence that represent respective object as polygon.
+
+First Input images have to be converted into text file.Header of image file have to be deleted from text file.
+In code, size of image, input file name and output file name has to written and object whose chain code has to extracted, user have to give object's North-West pixel's coordinate in code.
+
+5> Needle Wunsch Code.c
+
+Needleman Wunsch algorithm is applied on chain codes of parent’s pre processed images and child's pre processed images with different match score, mismatch score and gap penalty. Respected objects of both images are compared and score is generated.
+
+In code, input file name and output file name has to written.
+
+
+
+
+
+
+In Result Folder Output for 'Parent 2' image is shown.
+
+
+Images that are used in project are given in 'Original Images' folder.
